@@ -11,19 +11,16 @@ var words = [
     'DROIDS',
     'PRINCESS'];
 //Choose word randomly
-let word = words[Math.floor(Math.random() * words.length)];
-let currentWord = words[word];
-let underscore = [];
-let rightGuess = [];
-let wrongGuess = [];
-
+var currentWord = words[Math.floor(Math.random() * words.length)];
+var underscore = [];
+var wrongGuess = [];
 
 //testing
 console.log(currentWord);
 //create underscores based on length of word
-let generateUnderscore = () => {
-    for(let i = 0; i < currentWord.length; i++){
-        underscore.push('_ ');
+function generateUnderscore() {
+    for(var i = 0; i < currentWord.length; i++){
+        underscore.push('_');
     }
     return underscore;
 }
@@ -31,34 +28,75 @@ let generateUnderscore = () => {
 console.log(generateUnderscore());
 //get user's guess
 document.addEventListener('keypress', (event) => {
-    let guess = String.fromCharCode(event.keyCode);
+    var guess = String.fromCharCode(event.keyCode).toUpperCase();
     //if user's guess is right
-    if (currentWord.indexOf(guess, 0) > -1 ) {
+    if (currentWord.indexOf(guess) > -1 ) {
         console.log(true);
-        //add to rightGuess array
-        rightGuess.push(guess);
-        console.log(rightGuess);
-        //replace underscore
-        underscore[currentWord.indexOf(guess, 0)] = guess;
-        //check if guesses match word
-        if(underscore.join('') == currentWord){
-            alert('You win.');
+        for (i=0;i<currentWord.length;i++) {
+            if (currentWord[i] === guess) {
+            console.log(i);
+            }
         }
-
-
+          
+        // for (j = 0; j < currentWord.length; j++){
+        //     if (j < guess){
+        //         underscore[currentWord.indexOf(guess)] = guess;
+        //     }
+        //     // break;
+        // }
+        //replace underscore
+        underscore[currentWord.indexOf(guess)] = guess;
+        if (1 < currentWord.length) {
+        underscore[currentWord.indexOf(guess, 1)] = guess;
+    }
+        if (2 < currentWord.length) {
+        underscore[currentWord.indexOf(guess, 2)] = guess;
+    }
+        if (3 < currentWord.length) {
+        underscore[currentWord.indexOf(guess, 3)] = guess;
+    }
+        if (4 < currentWord.length) {
+        underscore[currentWord.indexOf(guess, 4)] = guess;
+    }
+        if (5 < currentWord.length) {
+        underscore[currentWord.indexOf(guess, 5)] = guess;
+    }
+        if (6 < currentWord.length) {
+        underscore[currentWord.indexOf(guess, 6)] = guess;
+    }
+        if (7 < currentWord.length) {
+        underscore[currentWord.indexOf(guess, 7)] = guess;
+    }
+        if (8 < currentWord.length) {
+        underscore[currentWord.indexOf(guess, 8)] = guess;
+    }
+        if (9 < currentWord.length) {
+        underscore[currentWord.indexOf(guess, 9)] = guess;
+    }
+        if (10 < currentWord.length) {
+        underscore[currentWord.indexOf(guess, 10)] = guess;
+    }
+        if (11 < currentWord.length) {
+        underscore[currentWord.indexOf(guess, 11)] = guess;
+    }
+        if (12 < currentWord.length) {
+        underscore[currentWord.indexOf(guess, 12)] = guess;
+    }
+        if (13 < currentWord.length) {
+        underscore[currentWord.indexOf(guess, 13)] = guess;
+    }
+        if (14 < currentWord.length) {
+        underscore[currentWord.indexOf(guess, 14)] = guess;
+    }
+        if (15 < currentWord.length) {
+        underscore[currentWord.indexOf(guess, 15)] = guess;
+    }
+        //testing
+        console.log(underscore); //how to replace more than one instance??
+       
     } else {
         wrongGuess.push(guess);
         console.log(wrongGuess);
     }
 });
-//check if guess is right
 
-//if right push to right array
-//if wrong push to wrong array
-
-
-//User presses key to start game
-//computer chooses word from array
-    //get word length
-    //display number of letters as dashes
-    //if correct guess, replace dash with letter
