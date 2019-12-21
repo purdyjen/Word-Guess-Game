@@ -32,12 +32,13 @@ function generateUnderscore() {
   }
   return underscore;
 }
- document.getElementById('underscores').createTextNode(underscore);
-
-
 //testing
 console.log(generateUnderscore());
 
+//prints underscores to screen
+var showUnderscores = document.getElementById("current");
+for (var j = 0; j < currentWordArray.length; j++)
+  showUnderscores.textContent += "  " + underscore[j] + "  ";
 
 //get user's guess
 document.addEventListener("keypress", function(event) {
@@ -47,15 +48,16 @@ document.addEventListener("keypress", function(event) {
     console.log(true);
     for (i = 0; i < currentWord.length; i++) {
       if (currentWord[i] === guess) {
-        console.log(i);
+        
       }
     }
     for (index = 0; index < currentWord.length; index++) {
       if (currentWordArray[index] === guess) {
         underscore[index] = guess;
+        showUnderscores.textContent += underscore[index]; //= overwrites underscores, += appends to end
         console.log(currentWordArray[index]);
         console.log(underscore);
-        console.log(currentWordArray);
+        // console.log(currentWordArray);
         win();
       }
     }
@@ -70,6 +72,10 @@ document.addEventListener("keypress", function(event) {
     wrongGuess.push(guess);
     guessesLeft--;
     lose();
+    document.getElementById("remaining").innerHTML =
+      "Number of Guesses Remaining: " + guessesLeft;
+    document.getElementById("guessed").innerHTML =
+      "Letters Already Guessed: " + wrongGuess + " ";
     console.log(wrongGuess);
     console.log(guessesLeft);
   }
