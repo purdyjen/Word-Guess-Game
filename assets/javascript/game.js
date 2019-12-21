@@ -19,6 +19,8 @@ var currentWordArray = [];
 var totalWins = 0;
 var guessesLeft = 10;
 
+
+
 //testing
 console.log(currentWord);
 
@@ -28,7 +30,7 @@ currentWordArray = currentWord.split("");
 //create underscores based on length of word
 function generateUnderscore() {
   for (var i = 0; i < currentWord.length; i++) {
-    underscore.push("_");
+    underscore.push(" _ ");
   }
   return underscore;
 }
@@ -56,26 +58,28 @@ document.addEventListener("keypress", function(event) {
         current.textContent = "Current Word:  " + underscore + "  "; //works...but don't like the formatting
         console.log(currentWordArray[index]);
         console.log(underscore);
+        console.log(currentWordArray);
         win();
       }
     }
   } else {
+    //if an incorrect letter has already been guessed
     for (index = 0; index < wrongGuess.length; index++) {
       if (wrongGuess[index] === guess) {
         alert("You've already guessed that letter!");
         return;
       }
     }
-
-    wrongGuess.push(" " + guess);
+    //if incorrect letter is guessed, reduces number of remaining guesses by one
+    wrongGuess.push(guess);
     guessesLeft--;
     lose();
+    // console.log(wrongGuess);
+    // console.log(guessesLeft);
     document.getElementById("remaining").textContent =
       "Number of Incorrect Guesses Remaining: " + guessesLeft;
     document.getElementById("guessed").textContent =
-      "Letters Already Guessed: " + wrongGuess + " "; //appears to be displaying as the actual array?
-    console.log(wrongGuess);
-    console.log(guessesLeft);
+      "Letters Already Guessed: " + wrongGuess + " ";
   }
 });
 
@@ -83,6 +87,7 @@ function win() {
   if (underscore.toString() === currentWordArray.toString()) {
     alert("You win!");
     totalWins++;
+    document.getElementById("total-wins").textContent = "Wins: " + totalWins;
   }
 }
 
@@ -91,3 +96,18 @@ function lose() {
     alert("You lose!");
   }
 }
+
+//play again button
+// reset current word, guesses remaining, and letters guessed
+document.getElementById('play-again').addEventListener("click", 
+function newGame() {
+    // console.log("This is the reset function.")    
+      currentWord = words[Math.floor(Math.random() * words.length)];
+      underscore = [];
+      wrongGuess = [];
+      currentWordArray = [];
+      guessesLeft = 10;
+       // document.getElementById("total-wins").textContent =
+      // "Wins: " + totalWins;
+    });
+
