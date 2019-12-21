@@ -48,16 +48,14 @@ document.addEventListener("keypress", function(event) {
     console.log(true);
     for (i = 0; i < currentWord.length; i++) {
       if (currentWord[i] === guess) {
-        
       }
     }
     for (index = 0; index < currentWord.length; index++) {
       if (currentWordArray[index] === guess) {
         underscore[index] = guess;
-        showUnderscores.textContent += underscore[index]; //= overwrites underscores, += appends to end
+        current.textContent = "Current Word:  " + underscore + "  "; //works...but don't like the formatting
         console.log(currentWordArray[index]);
         console.log(underscore);
-        // console.log(currentWordArray);
         win();
       }
     }
@@ -69,13 +67,13 @@ document.addEventListener("keypress", function(event) {
       }
     }
 
-    wrongGuess.push(guess);
+    wrongGuess.push(" " + guess);
     guessesLeft--;
     lose();
-    document.getElementById("remaining").innerHTML =
-      "Number of Guesses Remaining: " + guessesLeft;
-    document.getElementById("guessed").innerHTML =
-      "Letters Already Guessed: " + wrongGuess + " ";
+    document.getElementById("remaining").textContent =
+      "Number of Incorrect Guesses Remaining: " + guessesLeft;
+    document.getElementById("guessed").textContent =
+      "Letters Already Guessed: " + wrongGuess + " "; //appears to be displaying as the actual array?
     console.log(wrongGuess);
     console.log(guessesLeft);
   }
