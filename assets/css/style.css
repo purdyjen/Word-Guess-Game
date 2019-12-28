@@ -1,0 +1,27 @@
+h1 {
+    font-family: 'Audiowide', cursive;
+    margin-left: 30%;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+h2 {
+    font-family: 'Cute Font', cursive;
+    font-size: large;
+    color: #ffffff;
+    margin: 25px;
+}
+
+button {
+    font-family: 'Sigmar One', cursive;
+    margin: 10px;
+    color: #ffffff;
+    background-color: green;
+}
+
+body {
+    background-image: url(../images/star-wars-background-full-hd-459613.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
