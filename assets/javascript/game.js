@@ -67,12 +67,14 @@ window.onload = function(event) {
 document
   .getElementById("play-again")
   .addEventListener("click", function newGame() {
-    underscore = [];
-    wrongGuess = [];
-    currentWordArray = [];
+    underscore = [ ];
+    wrongGuess = [ ];
+    currentWordArray = [ ];
     guessesLeft = 10;
     currentWord;
     current.textContent = "Current Word:  " + underscore + "  ";
+    guessed.textContent = "Letters Already Guessed: ";
+    remaining.textContent = "Number of Incorrect Guesses Remaining: 10";
     startGame();
   });
 };
@@ -82,7 +84,6 @@ document.addEventListener("keypress", function(event) {
   var guess = String.fromCharCode(event.keyCode).toUpperCase();
 //if user's guess is right
   if (currentWord.indexOf(guess) > -1) {
-    console.log(true);
     for (i = 0; i < currentWord.length; i++) {
       if (currentWord[i] === guess) {
       }
@@ -103,6 +104,7 @@ document.addEventListener("keypress", function(event) {
       }
     }
     //if incorrect letter is guessed, reduces number of remaining guesses by one
+  
     wrongGuess.push(guess);
     guessesLeft--;
     lose();
@@ -123,6 +125,6 @@ function win() {
 
 function lose() {
   if (guessesLeft === 0) {
-    alert("You lose!");
+    alert("You lose! The word was " + currentWord + ".");
   }
 }
