@@ -25,11 +25,3 @@ body {
     background-repeat: no-repeat;
 }
 
-@media screen and (max-width: 640px) {
-
-body {
-    background-size: 640px;
-    overflow: hidden;
-}
-
-}
